@@ -1,0 +1,54 @@
+﻿@import "Variables.css";
+
+.Login-Register {
+    height: 90vh;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.Login-Register__card {
+    width: 50%;
+    max-width: 500px;
+    min-height: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    border: var(--border-radiant-hard);
+    border-radius: var(--length-radius-large);
+    box-shadow: var(--shadow-main);
+    background-color: var(--color-background-front);
+}
+
+    .Login-Register__card h2 {
+        text-align: center;
+        margin: var(--length-large);
+    }
+
+    .Login-Register__card form {
+        margin: var(--length-large);
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-evenly;
+    }
+
+    .Login-Register__card label,
+    .Login-Register__card input,
+    .Login-Register__card span {
+        margin: var(--length-large);
+    }
+
+    .Login-Register__card p {
+        text-align: center;
+        margin: var(--length-small);
+        margin-top: 0px;
+    }
+
+    .Login-Register__card button {
+        margin: var(--length-large);
+        margin-bottom: 0px;
+    }
+
+    .Login-Register__card span {
+        text-align: center;
+    }

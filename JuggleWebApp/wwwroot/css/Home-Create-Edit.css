@@ -1,0 +1,49 @@
+﻿@import "Variables.css";
+
+.Home-Create-Edit {
+    height: 90vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home-Create-Edit__card {
+    padding: var(--length-large);
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: var(--color-background-front);
+    border: var(--border-radiant-hard);
+    border-radius: var(--length-radius-large);
+    width: 60%;
+    max-width: 500px;
+    align-content: space-evenly;
+}
+    .Home-Create-Edit__card input,
+    .Home-Create-Edit__card textarea,
+    .Home-Create-Edit__card select,
+    .Home-Create-Edit__card label {
+        width: 80%;
+        align-self: center;
+        text-align: center;
+        margin: var(--length-small);
+    }
+
+    .Home-Create-Edit__card textarea {
+        height: 100px;
+        overflow: auto;
+    }
+
+.Home-Create-Edit button {
+    height: 50px;
+    align-self: center;
+    margin: 20px;
+    margin-bottom: 0px;
+    width: 80%;
+    font-size: 1.5rem;
+    border-radius: var(--length-radius-large);
+}
+
+.Home-Create-Edit button:hover {
+    transform: scale(1.01);
+}

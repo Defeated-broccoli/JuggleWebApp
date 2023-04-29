@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta author="Piotr Kwietniewski" />
+    <title>@ViewData["Title"] - JuggleWebApp</title>
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Home-Index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Home-Detail.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Tournament.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Tutorial.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Home-Create-Edit.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Variables.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Login-Register.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Home-About.css" asp-append-version="true" />
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="layout__nav">
+            <a class="layout__a" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="layout__a" asp-area="" asp-controller="Tournament" asp-action="Index">Tournaments</a>
+            <a class="layout__a" asp-area="" asp-controller="Tutorial" asp-action="Index">Tutorial</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="layout__a" asp-area="" asp-controller="Profile" asp-action="MyProfile" asp-route-userName="@User.Identity.Name"> Profile</a>
+                <a class="layout__a" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+            }
+            else
+            {
+                <a class="layout__a" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+            }  
+        </nav>
+    </header>
+    <div class="mainBody">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="layout__footer">
+            <a class="layout__aboutLink" asp-area="" asp-controller="Home" asp-action="About">About</a>
+        </div>
+    </footer>
+    <script src="~/js/layout.js"></script>
+</body>
+</html>

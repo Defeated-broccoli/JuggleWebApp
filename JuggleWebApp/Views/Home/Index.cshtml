@@ -1,0 +1,52 @@
+﻿@using JuggleWebApp.Models;
+@using System.Text.RegularExpressions;
+@model IEnumerable<Post>;
+
+
+<div class="home-index">
+    <button class="home-index__menu-button">
+        <div class="home-index__menu-icon"></div>
+    </button>
+    <div class="home-index__sidebar">
+        <div class="home-index__sidecontent">
+            <h1>TODO</h1>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a type="button" class="Home-Index__create-button" asp-controller="Home" asp-action="Create" asp-route-id="">Create</a>
+            }
+        </div>
+    </div>
+    <div class="home-index__content">
+        <ul class="home-index__list">
+            @foreach (var item in Model)
+            {
+                <li class="home-index__item">
+                    <a class="home-index__section" asp-controller="Home" asp-action="Detail" asp-route-id="@item.Id">
+                        <h3>@item.Title</h3>
+                        @if (Regex.Match(item.Image, @"\.mp4$").Success)
+                        {
+                            <video class="Home-Detail__image" controls preload="none">
+                                <source src="@item.Image" type="video/mp4">
+                            </video>
+                        }
+                        else
+                        {
+                            <img class="Home-Detail__image" src="@item.Image" alt="Post Image">
+                        }
+                    </a>
+                    <div class="home-index__buttons">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin") || (item.AppUser != null && item.AppUser.UserName == User.Identity.Name))
+                            {
+                                <a type="button" class="button" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">🖊️</a>
+                                <a type="button" class="delete-button" asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id">🗑️</a>
+                            }
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<script src="~/js/Home-Index.js"></script>

@@ -1,0 +1,57 @@
+﻿@using JuggleWebApp.ViewModels;
+@model ProfileViewModel;
+
+
+
+<div class="Profile">
+    <div class="Profile__profile">
+        <img class="Profile__image" src="@Model.Image" alt="User Image">
+        <div class="Profile__info">
+            <h2 class="Profile__name">@Model.Name</h2>
+            <p class="Profile__description">@Model.Description</p>
+        </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Admin") || (User.Identity.Name == Model.UserName))
+            {
+                <a asp-controller="Profile" asp-action="Edit" asp-route-userName="@User.Identity.Name">
+                    <div class="Profile__edit-button">
+                        Edit
+                    </div>
+                </a>
+            }
+        }
+
+    </div>
+    <div class="Profile__lists">
+        <section class="Profile__section-comment">
+            <h2>Comments</h2>
+            <ul>
+                @foreach (var comment in Model.Comments)
+                {
+                    <li class="Profile__card-post">
+                        <a href="/Home/Detail/@comment.PostId"> @comment.Post.Title</a>
+                        <p>@comment.Text</p>
+                        <p class="Profile__date">@comment.Date</p>
+
+                    </li>
+                }
+            </ul>
+        </section>
+        <section class="Profile__section-post">
+            <h2>Posts</h2>
+            <ul>
+                @foreach (var post in Model.Posts)
+                {
+                    <li class="Profile__card-comment">
+                        <a href="/Home/Detail/@post.Id">@post.Title</a>
+                        <img src="@post.Image">
+                        <p>@post.Description</p>
+                        <p class="Profile__date">@post.Date</p>
+                    </li>
+                }
+            </ul>
+        </section>
+    </div>
+</div>

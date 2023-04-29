@@ -1,0 +1,197 @@
+﻿@import "Variables.css";
+
+.Profile {
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* PROFILE CARD */
+
+.Profile__profile {
+    grid-area: 1 / 1 / 2 / 3;
+    border: var(--border-radiant-hard);
+    border-radius: var(--length-radius-large);
+    margin: var(--length-large);
+    box-shadow: var(--shadow-main);
+    display: grid;
+    grid-template-columns: auto 2fr auto;
+    grid-template-rows: 1fr 1fr;
+    background-color: var(--color-background-front);
+}
+
+.Profile__image {
+    grid-area: 1 / 1 / 3 / 2;
+    object-fit: contain;
+    margin: var(--length-large);
+    max-width: 50vw;
+    border-radius: var(--length-radius-large);
+    max-height: 45vh;
+}
+
+.Profile__info {
+    grid-area: 1 / 2 / 3 / 3;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+}
+
+.Profile__name {
+    margin: var(--length-large);
+    font-size: 2rem;
+    text-align: center;
+}
+
+.Profile__description {
+    margin: var(--length-large);
+    text-align: center;
+}
+
+.Profile__edit-button {
+    grid-area: 1 / 3 / 3 / 4;
+    background-color: var(--color-background-medium);
+    margin: var(--length-large);
+    border-radius: var(--length-radius-large);
+    border: var(--border-radiant-hard);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 0px 5vw;
+    height: 185%;
+}
+
+.Profile__edit:hover {
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.Profile__edit a {
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+}
+
+/* ----------------------------------------- */
+
+/* COMMENTS AND POSTS */
+.Profile__lists {
+    grid-area: 2 / 1 / 3 / 3;
+    min-height: 40vh;
+    display: flex;
+}
+
+.Profile section {
+    margin: var(--length-large);
+    border: var(--border-radiant-hard);
+    border-radius: var(--length-radius-large);
+    box-shadow: var(--shadow-main);
+    background-color: var(--color-background-front);
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.Profile__section-comment ul,
+.Profile__section-post ul{
+    overflow-y: scroll;
+}
+
+
+.Profile__card-post {
+    list-style: none;
+    padding: var(--length-small);
+    display: flex;
+    flex-flow: column nowrap;
+    border: var(--border-radiant-light);
+}
+
+.Profile__card-comment {
+    list-style: none;
+    padding: var(--length-small);
+    display: flex;
+    flex-flow: column nowrap;
+    border: var(--border-radiant-light);
+}
+
+
+    .Profile__card-comment a,
+    .Profile__card-post a {
+        font-size: 1.2rem;
+    }
+
+        .Profile__card-comment a:hover,
+        .Profile__card-post a:hover {
+            text-decoration: underline;
+            transform: none;
+        }
+
+    .Profile__card-comment img,
+    .Profile__card-post img {
+        width: 100px;
+        max-height: 300px;
+    }
+
+.Profile__section-comment h2,
+.Profile__section-post h2 {
+    text-align: center;
+    padding: var(--length-small);
+    border-bottom: var(--border-radiant-hard);
+}
+
+.Profile__date {
+    font-size: 10px;
+    font-style: italic;
+    text-align: right;
+}
+
+/*PROFILE EDIT VIEW */
+.Profile-Edit {
+    height: 90vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Profile-Edit__card {
+    padding: var(--length-large);
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: var(--color-background-front);
+    border: var(--border-radiant-hard);
+    border-radius: var(--length-radius-large);
+    width: 60%;
+    max-width: 500px;
+    align-content: space-evenly;
+}
+
+    .Profile-Edit__card input,
+    .Profile-Edit__card textarea,
+    .Profile-Edit__card select,
+    .Profile-Edit__card label {
+        width: 80%;
+        align-self: center;
+        text-align: center;
+        margin: var(--length-small);
+    }
+
+    .Profile-Edit__card textarea {
+        height: 100px;
+        overflow: auto;
+    }
+
+.Profile-Edit button {
+    height: 50px;
+    align-self: center;
+    margin: 20px;
+    margin-bottom: 0px;
+    width: 80%;
+    font-size: 1.5rem;
+    border-radius: var(--length-radius-large);
+}
+
+    .Profile-Edit button:hover {
+        transform: scale(1.01);
+    }

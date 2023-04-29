@@ -1,0 +1,56 @@
+﻿@import "Variables.css";
+
+.tournament {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 90vh;
+    justify-content: space-evenly;
+}
+
+.tournament__card {
+    width: 34%;
+    border: var(--border-radiant-hard);
+    background-color: var(--color-background-front);
+    box-shadow: var(--shadow-main);
+    margin: var(--length-large);
+    border-radius: var(--length-radius-large);
+}
+
+.tournament__center {
+    margin: auto;
+}
+
+.tournament__title {
+    text-align: center;
+    font-size: 2rem;
+    padding: var(--length-small);
+    border-bottom: var(--border-radiant-hard);
+    height: 100px;
+}
+
+.tournament__post {
+    border: var(--border-radiant-hard);
+    padding: 2px;
+    list-style: none;
+    margin: 2px;
+    background-color: var(--color-background-medium);
+}
+
+.tournament__post:hover {
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+}
+
+.tournament__post a {
+    text-align: center;
+}
+
+.tournament__post-title {
+    font-size: 1.3rem;
+    color: var(--color-font-basic);
+}
+
+.tournament__post-points {
+    font-size: 1rem;
+    color: var(--color-font-basic);
+}

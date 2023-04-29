@@ -1,0 +1,22 @@
+﻿@using JuggleWebApp.ViewModels;
+@model RegisterViewModel;
+
+<div class="Login-Register">
+    <div class="Login-Register__card">
+        <h2>Register</h2>
+        @if (TempData["Error"] != null)
+        {
+            <span><b>Sorry!</b> - @TempData["Error"] </span>
+        }
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <label asp-for="EmailAddress">Email address</label>
+            <input type="email" id="email" asp-for="EmailAddress" placeholder="Enter email">
+            <label asp-for="Password">Password</label>
+            <input type="password" id="password" asp-for="Password" placeholder="Password">
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input type="password" id="confirm-password" asp-for="ConfirmPassword" placeholder="Confirm Password">
+            <span asp-validation-for="ConfirmPassword"></span>
+            <button class="button" type="submit">Register</button>
+        </form>
+    </div>
+</div>

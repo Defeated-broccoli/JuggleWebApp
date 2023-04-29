@@ -1,0 +1,84 @@
+﻿@using JuggleWebApp.ViewModels;
+@using System.Text.RegularExpressions;
+@model DetailPostViewModel;
+
+<div class="Home-Detail">
+    <div class="Home-Detail__main">
+        <h1 class="Home-Detail__title">@Model.Post.Title</h1>
+        @if (Regex.Match(Model.Post.Image, @"\.mp4$").Success)
+        {
+            <video class="Home-Detail__image" controls>
+                <source src="@Model.Post.Image" type="video/mp4">
+            </video>
+        }
+        else
+        {
+            <img class="Home-Detail__image" src="@Model.Post.Image" alt="Post Image">
+        }
+
+        <p class="Home-Detail__date">@Model.Post.Date</p>
+
+        <div class="Home-Detail__details">
+            @if (Model.Post.Tournament != null)
+            {
+                <div class="Home-Detail__tournament">
+                    <h5>Tournament</h5>
+                    <p>@Model.Post.Tournament.Title</p>
+                </div>
+            }
+
+            <div class="Home-Detail__creator">
+                <h5>Creator</h5>
+                @if (Model.Post.AppUser.Name != null)
+                {
+                    <a href="/Profile/MyProfile?userName=@Model.Post.AppUser.UserName"><p>@Model.Post.AppUser.Name</p></a>
+                }
+                else
+                {
+                    <a href="/Profile/MyProfile?userName=@Model.Post.AppUser.UserName"><p>@Model.Post.AppUser.UserName</p></a>
+                }
+            </div>
+        </div>
+        <div class="Home-Detail__description">
+            <p> @Model.Post.Description</p>
+        </div>
+    </div>
+
+    <div class="Home-Detail__comments">
+        <h3>Comments</h3>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="Home" asp-action="AddComment">
+                <label asp-for="@Model.Comment.Text">Comment:</label>
+                <textarea asp-for="@Model.Comment.Text" placeholder="Enter Text"></textarea>
+                <span asp-validation-for="@Model.Comment.Text"></span>
+                <input type="hidden" asp-for="@Model.Post.Id" />
+                <button type="submit">Add</button>
+            </form>
+        }
+        <ul>
+            @foreach (var comment in Model.CommentsList)
+            {
+                <li>
+                    <img src="@comment.AppUser.Image" width="100">
+                    @if (comment.AppUser.Name != null)
+                    {
+                        <a href="/Profile/MyProfile?userName=@comment.AppUser.UserName"><h5>@comment.AppUser.Name</h5></a>
+                    }
+                    else
+                    {
+                        <a href="/Profile/MyProfile?userName=@comment.AppUser.UserName"><h5>@comment.AppUser.UserName</h5></a>
+                    }
+                    <p>@comment.Text</p>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin") || (comment.AppUser != null && comment.AppUser.UserName == User.Identity.Name))
+                        {
+                            <a type="button" class="Home-Detail__delete" asp-controller="Home" asp-action="DeleteComment" asp-route-commentId="@comment.Id" asp-route-postId="@Model.Post.Id">Delete</a>
+                        }
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+</div>

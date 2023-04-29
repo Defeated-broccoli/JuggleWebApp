@@ -1,0 +1,22 @@
+﻿@using JuggleWebApp.ViewModels;
+@model LoginViewModel;
+
+<div class="Login-Register">
+    <div class="Login-Register__card">
+        <h2>Login</h2>
+        <form method="post" asp-controller="Account" asp-action="Login">
+            <label asp-for="Login">Login or Email Address:</label>
+            <input asp-for="Login" id="email" placeholder="Enter email">
+            <span asp-validation-for="Login"></span>
+
+            <label asp-for="Password">Password:</label>
+            <input asp-for="Password">
+            <span asp-validation-for="Password"></span>
+
+            <button class="button" type="submit">Submit</button>
+        </form>
+        <p>
+            You don't have an account? <a asp-area="" asp-controller="Account" asp-action="Register">Register</a> now!
+        </p>
+    </div>
+</div>

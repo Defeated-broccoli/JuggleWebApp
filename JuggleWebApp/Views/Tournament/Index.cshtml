@@ -1,0 +1,26 @@
+﻿@using JuggleWebApp.ViewModels;
+@model List<TournamentViewModel>;
+
+<div class="tournament">
+    @foreach (var tournament in Model)
+    {
+        <div class="tournament__card">
+            <div class="tournament__center">
+                <h5 class="tournament__title">@tournament.Title</h5>
+            </div>
+            <ol>
+                @foreach (var post in tournament.Posts)
+                {
+                    <li class="tournament__post">
+                        <a href="/home/detail/@post.Id">
+                            <div>
+                                <h5 class="tournament__post-title">@post.Title</h5>
+                                <p class="tournament__post-points">Points: @post.Points</p>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ol>
+        </div>
+    }
+</div>

@@ -1,0 +1,24 @@
+﻿@using JuggleWebApp.ViewModels;
+@model CreatePostViewModel;
+
+<div class="Home-Create-Edit">
+    <form class="Home-Create-Edit__card" method="post" asp-controller="Home" asp-action="Create" enctype="multipart/form-data">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" placeholder="Enter Title">
+        <span asp-validation-for="Title"></span>
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" placeholder="Enter Description"></textarea>
+        <span asp-validation-for="Description"></span>
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" type="file" placeholder="Enter Image">
+        <span asp-validation-for="Image"></span>
+        <label asp-for="SelectedTournamentId">Tournament</label>
+        <select asp-for="SelectedTournamentId" asp-items="@Model.TournamentsList">
+            <option></option>
+        </select>
+        <span asp-validation-for="SelectedTournamentId"></span>
+        <input type="hidden" asp-for="TournamentsList" />
+        <input type="hidden" asp-for="AppUserId" />
+        <button class="Home-Create-Edit__button" type="submit">Submit</button>
+    </form>
+</div>

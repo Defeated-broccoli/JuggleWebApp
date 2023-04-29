@@ -1,0 +1,32 @@
+﻿@import "Variables.css";
+
+.Home-About {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--length-large);
+}
+
+.Home-About__card {
+    background-color: var(--color-background-front);
+    border: var(--border-radiant-hard);
+    border-radius: var(--length-radius-large);
+    width: 90%;
+    height: 90%;
+}
+
+.Home-About__card h1 {
+    font-size: 20rem;
+    text-align: center;
+    font-family: var(--font-link-style);
+}
+
+    .Home-About__card p {
+        text-align: center;
+        font-family: var(--font-link-style);
+    }
+
+.Home-About__card span {
+    text-decoration: underline;
+}
