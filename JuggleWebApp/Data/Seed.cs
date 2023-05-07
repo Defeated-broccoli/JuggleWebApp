@@ -96,35 +96,35 @@ namespace JuggleWebApp.Data
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-                string adminUserEmail = "";
+                string adminUserEmail = "wormx712@gmail.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
                 {
                     var newAdminUser = new AppUser()
                     {
-                        UserName = "",
+                        UserName = "admin",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
 
                     };
-                    await userManager.CreateAsync(newAdminUser, "");
+                    await userManager.CreateAsync(newAdminUser, "Piotrek7omega!");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
                 }
 
-                string appUserEmail = "";
+                string appUserEmail = "user@user.com";
 
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
                 if (appUser == null)
                 {
                     var newAppUser = new AppUser()
                     {
-                        UserName = "",
+                        UserName = "testuser",
                         Email = appUserEmail,
                         EmailConfirmed = true,
 
                     };
-                    await userManager.CreateAsync(newAppUser, "");
+                    await userManager.CreateAsync(newAppUser, "User1234!");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
                 }
             }
