@@ -61,7 +61,6 @@ namespace JuggleWebApp
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
-            //test test
         }
     }
 }
