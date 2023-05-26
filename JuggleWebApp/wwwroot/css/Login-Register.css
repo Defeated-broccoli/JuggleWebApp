@@ -38,6 +38,10 @@
         margin: var(--length-large);
     }
 
+    .Login-Register__card input {
+        margin-top: 0px;
+    }
+
     .Login-Register__card p {
         text-align: center;
         margin: var(--length-small);
@@ -47,8 +51,14 @@
     .Login-Register__card button {
         margin: var(--length-large);
         margin-bottom: 0px;
+        height: 40px;
+        font-size: 1.5rem;
     }
 
     .Login-Register__card span {
         text-align: center;
+    }
+
+    .Login-Register__card a {
+        text-decoration: underline;
     }
