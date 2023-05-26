@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -87,6 +88,43 @@ namespace JuggleWebApp.Tests
             viewModel.Should().BeEquivalentTo(expectedViewModel);
         }
 
+        [Fact]
+        public async void HomeController_AddComment_ReturnsSuccess()
+        {
+            int postId = 1;
+            var viewModelPost = new Post { Id = postId };
 
+            string userId = "userid";
+            string commentText = "texttext";
+
+            //Arange
+            var detailPostViewModel = new DetailPostViewModel()
+            {
+                Post = viewModelPost,
+                Comment = new Comment()
+                {
+                    Text = commentText
+                },
+            };
+
+            var comment = new Comment()
+            {
+                AppUserId = userId,
+                PostId = postId,
+                Text = detailPostViewModel.Comment.Text,
+                Date = DateTime.Now,
+            };
+
+            A.CallTo(() => _commentRepository.Add(comment)).Returns(true);
+
+            //Act
+            var result = await _homeController.AddComment(detailPostViewModel);
+
+            //Assert
+            result.Should().BeOfType<RedirectToActionResult>();
+            var redirectResult = result as RedirectToActionResult;
+            redirectResult.Should().NotBeNull();
+            redirectResult!.RouteValues["id"].Should().Be(postId);
+        }
     }
 }
