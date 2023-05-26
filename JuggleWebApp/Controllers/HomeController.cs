@@ -18,11 +18,12 @@ namespace JuggleWebApp.Controllers
     {
         private readonly IPostRepository _postRepository;
         private readonly ITournamentRepository _tournamentRepository;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IBlobStorageService _blobStorageService;
         private readonly ICommentRepository _commentRepository;
 
-        public HomeController(IPostRepository postRepository, ITournamentRepository tournamentRepository, IHttpContextAccessor httpContextAccessor, IBlobStorageService blobStorageService, ICommentRepository commentRepository)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IBlobStorageService _blobStorageService;
+
+        public HomeController(IPostRepository postRepository, ITournamentRepository tournamentRepository, ICommentRepository commentRepository, IHttpContextAccessor httpContextAccessor, IBlobStorageService blobStorageService)
         {
             _postRepository = postRepository;
             _tournamentRepository = tournamentRepository;
@@ -42,12 +43,15 @@ namespace JuggleWebApp.Controllers
         {
             var post = await _postRepository.GetPostById(id);
             var comments = await _commentRepository.GetCommentsByPostId(id);
-            
-            foreach(Comment comment in comments)
+
+            foreach (Comment comment in comments)
             {
-                if(comment.AppUser.Image == null)
+                if (comment.AppUser != null)
                 {
-                    comment.AppUser.Image = "https://jugglewebappstorage.blob.core.windows.net/defaults/obraz_2023-04-28_234911255.png";
+                    if (comment.AppUser.Image == null)
+                    {
+                        comment.AppUser.Image = "https://jugglewebappstorage.blob.core.windows.net/defaults/obraz_2023-04-28_234911255.png";
+                    }
                 }
             }
 
