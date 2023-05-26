@@ -2,4 +2,4 @@
 
 SOON LIVE!
 
-TODO
+https://youtu.be/YvAXas-Ju5c - presentation video
