@@ -4,7 +4,7 @@ CRUD social app for posting images and videos. It's written in C#, ASP.NET, with
 
 Unit tests in XUnit are added for most functions.
 
-<video controls>
-  <source src="https://clipchamp.com/watch/9liTfvfR2Bl" type="video/mp4">
-</video>
-            
+
+
+https://github.com/Defeated-broccoli/JuggleWebApp/assets/117183769/56e33acd-a689-4f73-bd50-53b3ad05676b
+
