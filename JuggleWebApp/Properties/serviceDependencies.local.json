@@ -12,6 +12,10 @@
       "type": "storage.azure",
       "connectionId": "AzureConnectionString",
       "dynamicId": null
+    },
+    "secrets1": {
+      "type": "secrets.user",
+      "dynamicId": null
     }
   }
 }

@@ -9,6 +9,10 @@
       "type": "storage",
       "connectionId": "AzureConnectionString",
       "dynamicId": null
+    },
+    "secrets1": {
+      "type": "secrets",
+      "dynamicId": null
     }
   }
 }

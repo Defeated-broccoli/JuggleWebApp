@@ -62,7 +62,7 @@ namespace JuggleWebApp.Controllers
             //user is not found
             else
             {
-                TempData["Error"] = "Coudln't find user. Are you registered?";
+                TempData["Error"] = "Couldn't find user. Are you registered?";
                 return View(loginViewModel);
             }
         }
